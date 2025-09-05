@@ -1,0 +1,18 @@
+Eva knows that she will often have to work with more than one service at once. She wants to practice creating two separate clients for two different services in boto3.
+One service is s3 (for storage) and one is sns (simple notification service). So Eva needs to initialize a boto3 client for s3 and another client for sns. 
+Her AWS key id and AWS secret have been stored in AWS_KEY_ID and AWS_SECRET respectively. Below are the sample codes:
+## Generate the boto3 client for interacting with s3 and sns:
+s3=boto3.client('s3', region_name='us-east-1', 
+                      aws_access_key_id=AWS_KEY_ID, 
+                      aws_secret_access_key=AWS_SECRET)
+
+sns=boto3.client('sns', region_name='us-east-1',
+                      aws_access_key_id=AWS_KEY_ID,
+                      aws_secret_access_key=AWS_SECRET)
+
+## List s3 buckets and sns topics
+buckets=s3.list_buckets()
+topics=sns.list_topics()
+
+## Print out the list of SNS topics
+print(topics)
